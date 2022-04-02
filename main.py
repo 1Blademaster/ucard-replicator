@@ -2,7 +2,7 @@ from epd import EPD_2in66
 import utime
 
 Y_START = 25
-Y_END = THIN_BAR00
+Y_END = 100
 THIN_BAR = 1
 WIDE_BAR = 3
 
