@@ -1,135 +1,5 @@
 from epd import EPD_2in66
 import utime
-
-Y_START = 25
-Y_END = 100
-THIN_BAR = 1
-WIDE_BAR = 3
-
-def draw(char, x, nextN=None):
-    if char == '*':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00) # thin black
-        # wide white
-        # gap 4
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00) #thin black
-        # thin white
-        # gap 4
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00) # wide black
-        # thin white
-        # gap 4
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00) # wide black
-        # # thin white
-        # # gap 2 ?
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00) # thin black
-    elif char == '0':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 6
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        if nextN in ['1', '3', '5', '8']:
-            x -= 2
-    elif char == '1':
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-    elif char == '2':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-    elif char == '3':
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-    elif char == '4':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 6
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-    elif char == '5':
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 6
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-    elif char == '6':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 6
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-    elif char == '7':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-    elif char == '8':
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-    elif char == '9':
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-        x -= 4
-        epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
-        x -= 2
-        epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
-
-    return x - 2
-
 '''
 
 (y, x)
@@ -142,23 +12,67 @@ def draw(char, x, nextN=None):
 
 fill_rect(y, x, h, w)
 
+n = narrow
+w = wide
+s = space
+
 '''
 
+Y_START = 25
+Y_END = 100
+THIN_BAR = 1
+WIDE_BAR = 3
+
+
+def drawBarcode(letter, x):
+    for idx, b in enumerate(letter):
+        if b == 'n':
+            epd.fill_rect(Y_START, x, Y_END, THIN_BAR, 0x00)
+            if idx + 1 < len(letter) and letter[idx + 1] == 'w':
+                x -= 4
+            else:
+                x -= 2
+        elif b == 'w':
+            epd.fill_rect(Y_START, x, Y_END, WIDE_BAR, 0x00)
+            if idx + 1 < len(letter) and letter[idx + 1] == 'n':
+                x -= 2
+            else:
+                x -= 4
+        elif b == 's':
+            if idx - 1 > -1 and idx + 1 < len(letter) and (
+                (letter[idx - 1] == 'n' and letter[idx + 1] == 'n') or
+                (letter[idx - 1] == 'w' and letter[idx + 1] == 'w') or
+                (letter[idx - 1] == 'w' and letter[idx + 1] == 'n')):
+                x -= 2
+            else:
+                x -= 4
+
+
 if __name__ == '__main__':
-    ucard_number = '*' + input('Enter a UCard number: ') + '*'
+    ucard_number = input('Enter a UCard number: ')
 
     epd = EPD_2in66()
     epd.Clear(0xff)
     epd.fill(0xff)
 
-    x = 236
+    x = 246
 
-    for idx, n in enumerate(ucard_number):
-        try:
-            x = draw(n, x, ucard_number[idx+1])
-        except IndexError:
-            x = draw(n, x)
+    asterix = 'nsnwwn'
 
-    epd.text(ucard_number.replace('*', ''), 38, 15, 0x00)
-            
+    numbers = [
+        'nnswwn', 'wnsnnw', 'nwsnnw', 'wwsnnn', 'nnswnw', 'wnswnn', 'nwswnn',
+        'nnsnww', 'wnsnwn', 'nwsnwn'
+    ]
+
+    code = asterix
+
+    for n in ucard_number:
+        code += numbers[int(n)]
+
+    code += asterix
+
+    drawBarcode(code, x)
+
+    epd.text(ucard_number, 38, 15, 0x00)
+
     epd.display(epd.buffer)
