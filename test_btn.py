@@ -7,13 +7,19 @@ btn = Pin(14, Pin.IN, Pin.PULL_UP)
 
 btn_last_pressed = time.ticks_ms()
 
+current_index = 0
+
+arr = [1, 2, 3, 4, 5]
 
 def btnHandler(pin):
-    print('Button pressed')
-    global led, btn_last_pressed
+    global led, btn_last_pressed, arr, current_index
     if time.ticks_diff(time.ticks_ms(), btn_last_pressed) > 500:
         print('Button pressed')
         led.toggle()
+
+        print(arr[current_index % len(arr)])
+        current_index += 1
+
         btn_last_pressed = time.ticks_ms()
 
 
