@@ -5,6 +5,7 @@ A small device meant to replicate CODE-39 barcodes on an e-ink display using a R
 *Using Pico-Go on VSCode 1.65.2*
 
 *My E-Ink display*: https://www.waveshare.com/wiki/Pico-ePaper-2.66
+*Docs*: https://www.waveshare.com/wiki/Pico-ePaper-2.66
 
 ### To run:
 
