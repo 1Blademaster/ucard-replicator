@@ -18,7 +18,10 @@ Currently when `main.py` is ran on the Pico, you can input a UCard number and it
 - - -
 
 ##### ToDo:
-- Add a button to switch through a predefined set of barcodes
 - Add another button to create custom barcodes
 - Tidy up code
 - Add a switch and connect the Pico to a small LiPo battery
+
+
+- - -
+Note: any misuse of this device/usage not allowed by the university is not my responsibility and will be your fault.
